@@ -122,7 +122,7 @@ function adminMenuHapus(){
         </div>
         <div class="fitem">
             <label for="type">URI</label>
-            <input type="text" name="uri" class="easyui-validatebox" required="true"/>
+            <input type="text" name="uri" class="easyui-validatebox" />
         </div>
         <div class="fitem">
             <label for="type">Allowed</label>

@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/easyui/themes/icon.css')?>">
     <script type="text/javascript" src="<?=base_url('assets/easyui/jquery.min.js')?>"></script>
     <script type="text/javascript" src="<?=base_url('assets/easyui/jquery.easyui.min.js')?>"></script>
-    <script type="text/javascript">        
+    <script type="text/javascript">
+        var url;        
         function addTab(title, url, iconCls){
             if ($('#tt').tabs('exists', title)){
                 $('#tt').tabs('select', title);
@@ -32,40 +33,97 @@
             } 
         }
         
+        function mainReset(){
+            var row = <?php echo $this->session->userdata('user_id');?>;
+            if(row){        
+                $('#dlg-reset-main').dialog('open').dialog('setTitle','Reset Password');
+                $('#fm-reset-main').form('reset');
+                url = '<?php echo site_url('admin/user/reset'); ?>/' + row;
+            }
+        }
+        
+        function mainResetSave(){
+            $('#fm-reset-main').form('submit',{
+                url: url,
+                onSubmit: function(){
+                    return $(this).form('validate');
+                },
+                success: function(result){
+                    var result = eval('('+result+')');
+                    if(result.success){
+                        $('#dlg-reset-main').dialog('close');
+                        $.messager.show({
+                            title: 'Info',
+                            msg: 'Password Changed'
+                        });
+                    } else {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.msg
+                        });
+                    }
+                }
+            });
+        }
     </script>
     
-    
+    <style type="text/css">
+        #fm-reset-main{
+            margin:0;
+            padding:10px 30px;
+        }
+        .ftitle{
+            font-size:14px;
+            font-weight:bold;
+            padding:5px 0;
+            margin-bottom:10px;
+            border-bottom:1px solid #ccc;
+        }
+        .fitem{
+            margin-bottom:5px;
+        }
+        .fitem label{
+            display:inline-block;
+            width:80px;
+        }
+    </style>
     
 </head>
 <body>    
     
     <div class="easyui-layout" fit="true" style="width:700px;height:350px;">
-        <div data-options="region:'north',border:true,split:true" style="height:34px" > 
+        <div data-options="region:'north',border:true,split:false" style="height:34px" > 
             <div class="easyui-layout" data-options="fit:true" >
                 <div data-options="region:'east',split:false,border:false" style="width:300px;background-color:#daeef5">                   
                     <div align='right' >
-                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" >
+                        <a href="javascript:void(0)" class="easyui-menubutton" menu="#mm2" data-options="plain:true,iconCls:'icon-user'" >
                             <?php echo $this->session->userdata('nama');?>,
-                            <?php echo $this->session->userdata('user_id');?>,
                             <?php 
                             setlocale (LC_TIME, 'INDONESIAN');
                             $st = strftime( "%A, %d %B %Y", strtotime(date('d-F-Y')));
                             echo $st;
                             ?>
-                        </a>                        
+                        </a>
+                        <div id="mm2" style="width:200px;">
+                            <div iconCls="icon-undo" onclick="mainReset()">Reset Password</div>
+                            <div class="menu-sep"></div>
+                            <div href="<?php echo site_url('welcome/logout'); ?>" iconCls="icon-logout">Logout</div>
+                        </div>
                     </div>            
                 </div>
                 <div data-options="region:'center',split:false,border:false" style="background-color:#daeef5">
                     <div>        
-                        <a href="javascript:void(0)" onclick="dashboardTab('Dashboard')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-dashboard'">Dashboard</a>
-                        <a href="<?php echo site_url('welcome/logout'); ?>" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-logout'">Logout</a>                        
+                        <a href="javascript:void(0)" onclick="dashboardTab('Dashboard')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-dashboard'">Dashboard</a>           
                     </div>
                 </div>
             </div>
             
         </div> 
         <!-- bottom -->
-        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        <div data-options="region:'south',split:false" style="height:100px;">
+            <h1 align="center">HRIS Software Ver. 2.0</h1>
+            <center>©2014 PT. Sagateknindo Sejati. All Rights Reserved.</center>
+        </div>
         
         <!-- left -->
         <div data-options="region:'west',split:true" title="Main Menu" iconCls="icon-menu" style="width:200px;">            
@@ -88,7 +146,20 @@
 	}
     });
     </script>
-    
+    <!-- Dialog Reset Form -->
+    <div id="dlg-reset-main" class="easyui-dialog" style="width:400px; height:150px; padding: 10px 20px" closed="true" buttons="#dlg-buttons-reset-main">
+        <form id="fm-reset-main" method="post" novalidate>       
+            <div class="fitem">
+                <label for="type">New Password</label>
+                <input id="pass" type="password" name="user_password" class="easyui-validatebox" required="true"/>
+            </div>        
+        </form>
+    </div>
+    <!-- Dialog Reset Button -->
+    <div id="dlg-buttons-reset-main">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="mainResetSave()">Simpan</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg-reset-main').dialog('close')">Batal</a>
+    </div>
     
 </body>
 </html>

@@ -65,7 +65,7 @@ function adminUserReset(){
     var row = $('#grid-admin-user').datagrid('getSelected');
     if(row){
         $('#dlg-reset-admin-user').dialog('open').dialog('setTitle','Reset Password');
-        $('#fm-reset-admin-user').form('load',row);
+        $('#fm-reset-main').form('reset');
         url = '<?php echo site_url('admin/user/reset'); ?>/' + row.user_id;
     }
 }
@@ -81,6 +81,10 @@ function adminUserResetSave(){
             if(result.success){
                 $('#dlg-reset-admin-user').dialog('close');
                 $('#grid-admin-user').datagrid('reload');
+                $.messager.show({
+                    title: 'Info',
+                    msg: 'Password Changed'
+                });
             } else {
                 $.messager.show({
                     title: 'Error',
@@ -211,10 +215,10 @@ function adminUserHapus(){
     </form>
 </div>
 <!-- Dialog Reset Form -->
-<div id="dlg-reset-admin-user" class="easyui-dialog" style="width:400px; height:250px; padding: 10px 20px" closed="true" buttons="#dlg-buttons-reset-admin-user">
+<div id="dlg-reset-admin-user" class="easyui-dialog" style="width:400px; height:150px; padding: 10px 20px" closed="true" buttons="#dlg-buttons-reset-admin-user">
     <form id="fm-reset-admin-user" method="post" novalidate>       
         <div class="fitem">
-            <label for="type">Password</label>
+            <label for="type">New Password</label>
             <input id="pass" type="password" name="user_password" class="easyui-validatebox" required="true"/>
         </div>        
     </form>

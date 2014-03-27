@@ -1,6 +1,4 @@
 Menu Allow uSer
-Change Password User
-
 -----------OK-----------
 Enum data PKWT
 flow update PKWT
@@ -13,3 +11,4 @@ system/libraries/fpdf.php ok
 autoload->libraries ok
 }
 Upload File
+Change Password User
