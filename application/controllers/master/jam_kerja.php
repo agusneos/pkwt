@@ -48,21 +48,56 @@ class Jam_kerja extends CI_Controller {
 
         $workday_id = intval(addslashes($_POST['workday_id']));
         $workday_path = addslashes($_POST['workday_path']);
+        $filename = "assets/schedules/" . $workday_path;
+       
+        if($workday_path != ''){
+             unlink($filename);
+        }
         if($this->record->delete($workday_id))
             echo json_encode(array('success'=>true));
         else
             echo json_encode(array('msg'=>'Gagal menghapus data'));
+        
     }
-    
+        
     public function upload($workday_id=null)
     {
         if(!isset($_POST))	
             show_404();
 
-        if($this->record->upload($workday_id))
+        $path = $_FILES["workday_path"]["name"];
+        
+        if($this->record->cekPath($path)){
+            echo json_encode(array('ada'=>true));
+        } 
+        if($this->record->upload($workday_id)) {
+            move_uploaded_file($_FILES["workday_path"]["tmp_name"],
+            "assets/schedules/" . $_FILES["workday_path"]["name"]);
+            echo json_encode(array('success'=>true));
+        } else {
+            echo json_encode(array('msg'=>'Gagal mengubah data'));
+        }
+            
+    }
+    
+    
+    public function deleteFile()
+    {
+        if(!isset($_POST))	
+            show_404();
+       
+        $workday_id = $this->input->post('workday_id',true);
+        $workday_path = $this->input->post('workday_path',true);
+        $filename = "assets/schedules/" . $workday_path;
+        
+        if($workday_path != '' && file_exists($filename)){
+             unlink($filename);
+        }
+        if($this->record->deleteFile($workday_id))
             echo json_encode(array('success'=>true));
         else
             echo json_encode(array('msg'=>'Gagal mengubah data'));
+                
     }
                
 }

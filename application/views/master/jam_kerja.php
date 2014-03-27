@@ -66,11 +66,8 @@ function UploadJadwal()
 {
     var row = $('#grid-master-jam_kerja').datagrid('getSelected');
     if(row){
-        alert(row.workday_path);
-            $('#dlg-master-jam_kerja-upload').dialog('open').dialog('setTitle','Upload Jadwal');
-   
-        $('#fm-master-jam_kerja-upload').form('load',{workday_path:row.workday_path});
-        
+        $('#dlg-master-jam_kerja-upload').dialog('open').dialog('setTitle','Upload Jadwal');   
+        $('#fm-master-jam_kerja-upload').form('load',row);        
         urls = '<?php echo site_url('master/jam_kerja/upload'); ?>/' + row.workday_id;        
     }
 }
@@ -86,6 +83,11 @@ function masterJam_kerjaSaveUpload(){
             if(result.success){
                 $('#dlg-master-jam_kerja-upload').dialog('close');
                 $('#grid-master-jam_kerja').datagrid('reload');
+            } else if (result.ada) {
+                $.messager.show({
+                    title: 'Error',
+                    msg: 'File Sudah Ada'
+                });
             } else {
                 $.messager.show({
                     title: 'Error',
@@ -97,7 +99,20 @@ function masterJam_kerjaSaveUpload(){
 }
 
 function hapusFile(){
-    alert();
+    var row = $('#grid-master-jam_kerja').datagrid('getSelected');
+    if(row){
+        $.post('<?php echo site_url('master/jam_kerja/deleteFile'); ?>',
+                {workday_id:row.workday_id,workday_path:row.workday_path},function(result){
+                    if (result.success){
+                        $('#grid-master-jam_kerja').datagrid('reload');
+                    } else {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.msg
+                        });
+                    }
+                },'json');
+    }
 }
 </script>
 <style type="text/css">
@@ -154,6 +169,7 @@ function hapusFile(){
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="masterJam_kerjaHapus()">Hapus Data</a>
     |
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-upload" plain="true" onclick="UploadJadwal()">Upload Jadwal</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="hapusFile()">Hapus Jadwal</a>
 </div>
 
 <!-- Dialog Form -->
@@ -195,9 +211,7 @@ function hapusFile(){
     <form id="fm-master-jam_kerja-upload" method="post" enctype="multipart/form-data" novalidate>        
         <div class="fitem">
             <label for="type">File</label>
-            <input type="file" id="workday_path" name="workday_path" class="easyui-validatebox" validType="fileType['xls']" required="true"/></input>
-            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" 
-                onclick="hapusFile()"></a>
+            <input type="file" id="path" name="workday_path" class="easyui-validatebox" validType="fileType['xls']" required="true"/>
         </div>        
     </form>
 </div>

@@ -102,26 +102,37 @@ class Jam_kerja_model extends CI_Model
    
     public function delete($workday_id)
     {
-        $workday_path = $this->input->post('workday_path',true);
-        $filename = "assets/schedules/" . $workday_path;
-        if (unlink($filename)){
-            return $this->db->delete(self::$table, array('workday_id' => $workday_id));
-        } else {
-            return $this->db->delete(self::$table, array('workday_id' => $workday_id));
-        }
-        
-        
+        return $this->db->delete(self::$table, array('workday_id' => $workday_id));
     }
     
     public function upload($workday_id)
     {
         $path = $_FILES["workday_path"]["name"];
-        move_uploaded_file($_FILES["workday_path"]["tmp_name"],
-            "assets/schedules/" . $_FILES["workday_path"]["name"]);
         
         $this->db->where('workday_id', $workday_id);
         return $this->db->update(self::$table,array(
             'workday_path'=>$path
+        ));
+    }
+    
+    public function cekPath($path)
+    {
+        $this->db->where('workday_path', $path);
+        $query  = $this->db->get(self::$table);
+        if ($query){
+            return true;
+        }
+            return false;
+     //   return $this->db->update(self::$table,array(
+      //      'workday_path'=>$path
+       // ));
+    }
+    
+    public function deleteFile($workday_id)
+    {        
+        $this->db->where('workday_id', $workday_id);
+        return $this->db->update(self::$table,array(
+            'workday_path'=>''
         ));
     }
     
