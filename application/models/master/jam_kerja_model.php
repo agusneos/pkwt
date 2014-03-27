@@ -115,25 +115,34 @@ class Jam_kerja_model extends CI_Model
         ));
     }
     
-    public function cekPath($path)
+    public function cekPath($workday_id)
     {
-        $this->db->where('workday_path', $path);
+        $this->db->select('workday_path');
+        $this->db->where('workday_id', $workday_id);
         $query  = $this->db->get(self::$table);
-        if ($query){
-            return true;
-        }
-            return false;
-     //   return $this->db->update(self::$table,array(
-      //      'workday_path'=>$path
-       // ));
+        
+        foreach ($query->result() as $row)
+        {
+            if ($row->workday_path != ''){
+                return true;
+            }
+                return false;           
+        } 
     }
     
     public function deleteFile($workday_id)
-    {        
+    {
+        $this->db->select('workday_path');
         $this->db->where('workday_id', $workday_id);
-        return $this->db->update(self::$table,array(
-            'workday_path'=>''
-        ));
+        $query  = $this->db->get(self::$table);
+        
+        foreach ($query->result() as $row)
+        {
+            $path = $row->workday_path;
+            $filename = "assets/schedules/".$path;
+            unlink($filename);                     
+        }
     }
     
+
 }

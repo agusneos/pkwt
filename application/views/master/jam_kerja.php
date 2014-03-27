@@ -67,7 +67,8 @@ function UploadJadwal()
     var row = $('#grid-master-jam_kerja').datagrid('getSelected');
     if(row){
         $('#dlg-master-jam_kerja-upload').dialog('open').dialog('setTitle','Upload Jadwal');   
-        $('#fm-master-jam_kerja-upload').form('load',row);        
+        //$('#fm-master-jam_kerja-upload').form('load',row);
+        $('#fm-master-jam_kerja-upload').form('reset');
         urls = '<?php echo site_url('master/jam_kerja/upload'); ?>/' + row.workday_id;        
     }
 }
@@ -86,7 +87,7 @@ function masterJam_kerjaSaveUpload(){
             } else if (result.ada) {
                 $.messager.show({
                     title: 'Error',
-                    msg: 'File Sudah Ada'
+                    msg: 'Duplicate File Exists'
                 });
             } else {
                 $.messager.show({
@@ -98,22 +99,6 @@ function masterJam_kerjaSaveUpload(){
     });
 }
 
-function hapusFile(){
-    var row = $('#grid-master-jam_kerja').datagrid('getSelected');
-    if(row){
-        $.post('<?php echo site_url('master/jam_kerja/deleteFile'); ?>',
-                {workday_id:row.workday_id,workday_path:row.workday_path},function(result){
-                    if (result.success){
-                        $('#grid-master-jam_kerja').datagrid('reload');
-                    } else {
-                        $.messager.show({
-                            title: 'Error',
-                            msg: result.msg
-                        });
-                    }
-                },'json');
-    }
-}
 </script>
 <style type="text/css">
     #fm-master-jam_kerja{
@@ -169,7 +154,6 @@ function hapusFile(){
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="masterJam_kerjaHapus()">Hapus Data</a>
     |
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-upload" plain="true" onclick="UploadJadwal()">Upload Jadwal</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="hapusFile()">Hapus Jadwal</a>
 </div>
 
 <!-- Dialog Form -->
@@ -181,27 +165,27 @@ function hapusFile(){
         </div>
         <div class="fitem">
             <label for="type">Batas Atas I</label>
-            <input name="workday_I_top" class="easyui-numberbox" />
+            <input name="workday_I_top" class="easyui-numberbox" precision="1" />
         </div>
         <div class="fitem">
             <label for="type">Batas Bawah I</label>
-            <input name="workday_I_bottom" class="easyui-numberbox" />
+            <input name="workday_I_bottom" class="easyui-numberbox" precision="1" />
         </div>
         <div class="fitem">
             <label for="type">Batas Atas P</label>
-            <input name="workday_P_top" class="easyui-numberbox" />
+            <input name="workday_P_top" class="easyui-numberbox" precision="1" />
         </div>
         <div class="fitem">
             <label for="type">Batas Bawah P</label>
-            <input name="workday_P_bottom" class="easyui-numberbox" />
+            <input name="workday_P_bottom" class="easyui-numberbox" precision="1" />
         </div>
         <div class="fitem">
             <label for="type">Batas Atas II</label>
-            <input name="workday_II_top" class="easyui-numberbox" />
+            <input name="workday_II_top" class="easyui-numberbox" precision="1" />
         </div>
         <div class="fitem">
             <label for="type">Batas Bawah II</label>
-            <input name="workday_II_bottom" class="easyui-numberbox" />
+            <input name="workday_II_bottom" class="easyui-numberbox" precision="1" />
         </div>
     </form>
 </div>
@@ -211,7 +195,7 @@ function hapusFile(){
     <form id="fm-master-jam_kerja-upload" method="post" enctype="multipart/form-data" novalidate>        
         <div class="fitem">
             <label for="type">File</label>
-            <input type="file" id="path" name="workday_path" class="easyui-validatebox" validType="fileType['xls']" required="true"/>
+            <input type="file" id="path" name="workday_path" class="easyui-validatebox" required="true"/>
         </div>        
     </form>
 </div>
