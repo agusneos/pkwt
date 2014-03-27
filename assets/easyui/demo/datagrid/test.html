@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="jquery,ui,easy,easyui,web">
+	<meta name="description" content="easyui helps you build your web pages easily!">
+	<title>DataGrid Filter Row - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>DataGrid Filter Row</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip">&nbsp;</div>
+		<div>This sample shows how to customize the filter menu of datagrid.</div>
+	</div>
+	
+	<table id="dg" title="DataGrid" style="width:700px;height:250px" data-options="
+				singleSelect:true,
+				url:'test.php',
+				remoteFilter:true,
+				pagination:true
+			">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:80">Item ID</th>
+				<th data-options="field:'productid',width:100">Product</th>
+				<th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+				<th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+				<th data-options="field:'attr1',width:250">Attribute</th>
+				<th data-options="field:'status',width:60,align:'center'">Status</th>
+			</tr>
+		</thead>
+	</table>
+        <script type="text/javascript" src="../../datagrid-filter.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var dg = $('#dg').datagrid();
+			dg.datagrid('enableFilter', [{
+				field:'listprice',
+				type:'numberbox',
+				options:{precision:1},
+				op:['equal','notequal','less','greater']
+			},{
+				field:'unitcost',
+				type:'numberbox',
+				options:{precision:1},
+				op:['equal','notequal','less','greater']
+			},{
+				field:'status',
+				type:'combobox',
+				options:{
+					panelHeight:'auto',
+					data:[{value:'',text:'All'},{value:'P',text:'P'},{value:'N',text:'N'}],
+					onChange:function(value){
+						if (value == ''){
+							dg.datagrid('removeFilterRule', 'status');
+						} else {
+							dg.datagrid('addFilterRule', {
+								field: 'status',
+								op: 'equal',
+								value: value
+							});
+						}
+						dg.datagrid('doFilter');
+					}
+				}
+			}]);
+		});
+	</script>
+</body>
+</html>
