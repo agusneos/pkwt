@@ -180,7 +180,7 @@
             <label for="type">PKWT Sebelumnya</label>
             <input id="bef" class="easyui-combobox" name="pkwt_before" onchange="transaksiPkwtCont()" data-options="
                 url:'<?php echo site_url('transaksi/pkwt/getPkwtBefore'); ?>',
-                method:'get', valueField:'pkwt_id', textField:'pkwt_id', panelHeight:'200'" />
+                method:'get', valueField:'pkwt_id', textField:'emply_name', panelHeight:'200'" />
                 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" 
                 onclick="$('#bef').combobox('reload', '<?php echo site_url('transaksi/pkwt/getPkwtBefore'); ?>')"></a>
         </div>

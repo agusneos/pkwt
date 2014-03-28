@@ -86,6 +86,25 @@ class Menu_model extends CI_Model
         return json_encode($data);         
     }
     
+    public function getUser()
+    {
+        $this->db->select('user_id, user_level, user_nama');
+        $this->db->order_by('user_nama', 'asc');
+        $query  = $this->db->get('user');
+                   
+        $data = array();
+        foreach ( $query->result() as $row )
+        {
+            $node = array();
+            $node['id'] = '+'.$row->user_id;
+            //$node['id'] = $row->user_level;
+            $node['text'] = $row->user_nama;
+            $node['iconCls'] = 'icon-user';
+            array_push($data, $node); 
+        }       
+        return json_encode($data);         
+    }
+    
     public function create()
     {
         return $this->db->insert(self::$table,array(

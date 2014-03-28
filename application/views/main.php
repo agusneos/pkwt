@@ -92,7 +92,8 @@
 <body>    
     
     <div class="easyui-layout" fit="true" style="width:700px;height:350px;">
-        <div data-options="region:'north',border:true,split:false" style="height:34px" > 
+        <!-- Top -->
+        <div data-options="region:'north',border:true,split:false" style="height:34px;height:28px;" > 
             <div class="easyui-layout" data-options="fit:true" >
                 <div data-options="region:'east',split:false,border:false" style="width:300px;background-color:#daeef5">                   
                     <div align='right' >
@@ -121,7 +122,7 @@
         </div> 
         <!-- bottom -->
         <div data-options="region:'south',split:false" style="height:100px;">
-            <h1 align="center">HRIS Software Ver. 2.0</h1>
+            <h1 align="center">HRIS Software Ver. 1.0</h1>
             <center>©2014 PT. Sagateknindo Sejati. All Rights Reserved.</center>
         </div>
         

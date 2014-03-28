@@ -407,7 +407,7 @@ foreach($pkwt->result() as $data)
 $judul      = kwt3($data->pkwt_kk).'PERJANJIAN KERJA WAKTU TERTENTU';
 $no_pkwt    = 'No. : '.$data->pkwt_id.'/PKWT/HRD-GA/'.Romawi($data->pkwt_sign).'/'.fty($data->pkwt_sign);
 $paragrap_1 = kwt1($data->pkwt_kk).'Perjanjian Kerja Waktu Tertentu '.tampil_no($data->pkwt_kk, $no_pkwt).' (selanjutnya disebut "'.kwt2($data->pkwt_kk).'") '.'ini dibuat dan ditandatangani di Cikarang pada hari ini '.fh($data->pkwt_sign).', tanggal '.ft($data->pkwt_sign).', oleh dan antara:';
-$I          = 'PT HIKARI METALINDO PRATAMA, suatu perseroan terbatas yang didirikan menurut hukum Negara Republik Indonesia, berkedudukan di Jl. Raya Serang Cibarusah Rt 010/02 Cikarang 17550 dalam hal ini diwakili oleh Bapak Ir. Bambang Tjondro selaku Manager HRD-GA selaku kuasa dari Bapak Rudy Teo selaku Direktur Utama PT.Hikari Metalindo Pratama berdasarkan Surat Kuasa tertanggal 02 Januari 2013 oleh karenanya sah bertindak untuk dan atas nama PT.Hikari Metalindo Pratama (selanjutnya disebut sebagai PIHAK PERTAMA);';
+$I          = 'PT SAGATEKNINDO SEJATI, suatu perseroan terbatas yang didirikan menurut hukum Negara Republik Indonesia, berkedudukan di Jl. Raya Serang Cibarusah Rt 010/02 Cikarang 17550 dalam hal ini diwakili oleh Bapak Ir. Bambang Tjondro selaku Manager HRD-GA selaku kuasa dari Bapak Rudy Teo selaku Direktur Utama PT.Sagateknindo Sejati berdasarkan Surat Kuasa tertanggal 02 Januari 2013 oleh karenanya sah bertindak untuk dan atas nama PT.Sagateknindo Sejati (selanjutnya disebut sebagai PIHAK PERTAMA);';
 $II         = 'Dalam hal ini bertindak untuk dan atas namanya sendiri, selanjutnya dalam PKWT ini disebut sebagai PIHAK KEDUA.';
 $IIbawah    = awal_bawah($data->pkwt_kk);
 $pasal1_1   = $data->post_name.' / '.$data->dept_name;
@@ -514,7 +514,7 @@ $fpdf->Cell(0,0.5,'RUANG LINGKUP DAN JASA',0,0,'C');
 $fpdf->Ln(1);
 $fpdf->SetFont('Arial','',10);
 $fpdf->Cell(0.75,0.5,'(1)',0,0,'L');
-$fpdf->MultiCell(0,0.5,'PIHAK PERTAMA setuju dan sepakat menerima PIHAK KEDUA bekerja di PT Hikari Metalindo Pratama dan PIHAK KEDUA setuju dan sepakat bekerja di PT Hikari Metalindo Pratama dengan Jabatan/Bagian sebagai berikut:',0,'J');
+$fpdf->MultiCell(0,0.5,'PIHAK PERTAMA setuju dan sepakat menerima PIHAK KEDUA bekerja di PT Sagateknindo Sejati dan PIHAK KEDUA setuju dan sepakat bekerja di PT Sagateknindo Sejati dengan Jabatan/Bagian sebagai berikut:',0,'J');
 
 $fpdf->Ln();
 $fpdf->Cell(0.75,0.5,'',0,0,'L');
@@ -526,17 +526,17 @@ $fpdf->Ln();
 $fpdf->Cell(0.75,0.5,'',0,0,'L');
 $fpdf->Cell(4,0.5,'Lokasi Tugas',0,0,'L');
 $fpdf->Cell(0.5,0.5,':',0,0,'C');
-$fpdf->Cell(0,0.5,'Pabrik  dan/atau di luar Pabrik PT Hikari Metalindo Pratama',0,0,'L');
+$fpdf->Cell(0,0.5,'Pabrik  dan/atau di luar Pabrik PT Sagateknindo Sejati',0,0,'L');
 // PASAL 1-2
 $fpdf->Ln(1);
 $fpdf->SetFont('Arial','',10);
 $fpdf->Cell(0.75,0.5,'(2)',0,0,'L');
-$fpdf->MultiCell(0,0.5,'PARA PIHAK sepakat bahwa PIHAK PERTAMA berhak untuk memindahkan PIHAK KEDUA ke posisi pekerjaan lainnya, sebagaimana dibutuhkan oleh PT. Hikari Metalindo Pratama, jika menurut pertimbangan PIHAK PERTAMA, PIHAK KEDUA dianggap memenuhi kualifikasi pekerjaan untuk jabatan/jenis pekerjaan lain tersebut dan sesuai dengan kemampuan (skill) PIHAK KEDUA.',0,'J');
+$fpdf->MultiCell(0,0.5,'PARA PIHAK sepakat bahwa PIHAK PERTAMA berhak untuk memindahkan PIHAK KEDUA ke posisi pekerjaan lainnya, sebagaimana dibutuhkan oleh PT. Sagateknindo Sejati, jika menurut pertimbangan PIHAK PERTAMA, PIHAK KEDUA dianggap memenuhi kualifikasi pekerjaan untuk jabatan/jenis pekerjaan lain tersebut dan sesuai dengan kemampuan (skill) PIHAK KEDUA.',0,'J');
 //PASAL 1-3
 $fpdf->Ln(0.5);
 $fpdf->SetFont('Arial','',10);
 $fpdf->Cell(0.75,0.5,'(3)',0,0,'L');
-$fpdf->MultiCell(0,0.5,'PIHAK KEDUA bersedia untuk ditempatkan dan atau mutasi atau rotasi ke bagian lain yang dipandang sesuai dengan kebutuhan PT. Hikari Metalindo Pratama.',0,'J');
+$fpdf->MultiCell(0,0.5,'PIHAK KEDUA bersedia untuk ditempatkan dan atau mutasi atau rotasi ke bagian lain yang dipandang sesuai dengan kebutuhan PT. Sagateknindo Sejati.',0,'J');
 // PASAL 1-4
 $fpdf->Ln(0.5);
 $fpdf->SetFont('Arial','',10);
@@ -576,7 +576,7 @@ $fpdf->Cell(0,0.5,'HARI KERJA DAN JAM KERJA',0,0,'C');
 $fpdf->Ln(1);
 $fpdf->SetFont('Arial','',10);
 $fpdf->Cell(0.75,0.5,'(1)',0,0,'L');
-$fpdf->MultiCell(0,0.5,'Jam kerja di PT. Hikari Metalindo Pratama adalah 8 (delapan) jam sehari dan 40  (empat puluh) jam seminggu atau 5 (lima) hari kerja, apabila jam kerja melebihi ketentuan dihitung jam kerja lembur.',0,'J');
+$fpdf->MultiCell(0,0.5,'Jam kerja di PT. Sagateknindo Sejati adalah 8 (delapan) jam sehari dan 40  (empat puluh) jam seminggu atau 5 (lima) hari kerja, apabila jam kerja melebihi ketentuan dihitung jam kerja lembur.',0,'J');
 // PASAL 3-2
 $fpdf->Ln(0.5);
 $fpdf->Cell(0.75,0.5,'(2)',0,0,'L');
@@ -875,7 +875,7 @@ $fpdf->MultiCell(0,0.5,'Sehubungan dengan pengunduran diri PIHAK KEDUA diatas, P
 
 $fpdf->Ln(0.5);
 $fpdf->Cell(0.75,0.5,'(5)',0,0,'L');
-$fpdf->MultiCell(0,0.5,'Sehubungan dengan pengakhiran '.kwt2($data->pkwt_kk).' diatas PIHAK KEDUA tidak berhak untuk mengajukan tuntutan-tuntutan, klaim, gugatan hukum dalam bentuk apapun baik secara perdata, pidana maupun perselisihan hubungan industrial kepada PIHAK PERTAMA, manajemen (Direksi dan/atau Komisaris), pemegang saham dan karyawan PT Hikari Metalindo Pratama dikemudian hari.',0,'J');
+$fpdf->MultiCell(0,0.5,'Sehubungan dengan pengakhiran '.kwt2($data->pkwt_kk).' diatas PIHAK KEDUA tidak berhak untuk mengajukan tuntutan-tuntutan, klaim, gugatan hukum dalam bentuk apapun baik secara perdata, pidana maupun perselisihan hubungan industrial kepada PIHAK PERTAMA, manajemen (Direksi dan/atau Komisaris), pemegang saham dan karyawan PT Sagateknindo Sejati dikemudian hari.',0,'J');
 
 /////////////
 
@@ -909,7 +909,7 @@ $fpdf->MultiCell(0,0.5,'PIHAK KEDUA akan melaksanakan dan mentaati seluruh keten
 $fpdf->Ln(0);
 $fpdf->Cell(0.75,0.5,'',0,0,'L');
 $fpdf->Cell(0.75,0.5,'d.',0,0,'L');
-$fpdf->MultiCell(0,0.5,'Sehubungan dengan pengakhiran Pembaharuan '.kwt2($data->pkwt_kk).' PIHAK KEDUA menjamin tidak akan mengajukan tuntutan-tuntutan, klaim, gugatan hukum dalam bentuk apapun baik secara perdata, pidana maupun perselisihan hubungan industrial kepada PIHAK PERTAMA, manajemen (Direksi dan/atau Komisaris), pemegang saham dan karyawan PT Hikari Metalindo Pratama dikemudian hari.',0,'J');
+$fpdf->MultiCell(0,0.5,'Sehubungan dengan pengakhiran Pembaharuan '.kwt2($data->pkwt_kk).' PIHAK KEDUA menjamin tidak akan mengajukan tuntutan-tuntutan, klaim, gugatan hukum dalam bentuk apapun baik secara perdata, pidana maupun perselisihan hubungan industrial kepada PIHAK PERTAMA, manajemen (Direksi dan/atau Komisaris), pemegang saham dan karyawan PT Sagateknindo Sejati dikemudian hari.',0,'J');
 
 $fpdf->Ln(0.5);
 $fpdf->Cell(0.75,0.5,'(2)',0,0,'L');

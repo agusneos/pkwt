@@ -130,7 +130,7 @@ function adminMenuHapus(){
         </div>
         <div class="fitem">
             <label for="type">Icon</label>
-            <input type="text" name="iconCls" class="easyui-validatebox" required="true"/>
+            <input type="text" name="iconCls" class="easyui-validatebox" />
         </div>
     </form>
 </div>

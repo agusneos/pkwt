@@ -82,7 +82,6 @@
 
 <!-- Toolbar -->
 <div id="toolbar-dashboard" >
-   <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="printPkwt()">Cetak PKWT</a> -->
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="printEvaluasi()">Cetak Evaluasi</a>          
 </div>
 <!-- Dialog Form -->

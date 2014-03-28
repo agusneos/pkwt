@@ -25,6 +25,12 @@ class Menu extends CI_Controller {
       
     }
     
+    public function getUser()
+    {        
+        echo $this->record->getUser();       
+      
+    }
+    
     public function create()
     {
         if(!isset($_POST))	
