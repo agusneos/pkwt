@@ -116,7 +116,7 @@ function  masterUpahHapus(){
             <input type="text" name="salary_id" class="easyui-validatebox" required="true"/>
         </div>
         <div class="fitem">
-            <label for="type">Nama Bank</label>
+            <label for="type">Amount</label>
             <input type="text" name="salary_amt" class="easyui-validatebox" required="true"/>
         </div>
     </form>
