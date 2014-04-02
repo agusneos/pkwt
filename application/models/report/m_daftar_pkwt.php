@@ -46,7 +46,20 @@ class M_daftar_pkwt extends CI_Model
     
     function test()
     {
-        return $this->db->get(self::$table);
+        $this->db->select('emply.emply_name, 
+                        d1.dept_name AS bagian,
+                        d2.dept_name AS departemen,
+                        emply.emply_start,
+                        p1.pkwt_end AS pembaharuan,
+                        p2.pkwt_end AS perpanjangan,
+                        p3.pkwt_end AS awal');
+        $this->db->join('emply','emply_nik=p1.pkwt_nik','left')
+                ->join('dept d1','p1.pkwt_dept=d1.dept_id','left')
+                ->join('pkwt p2','p1.pkwt_before=p2.pkwt_id','left')
+                ->join('pkwt p3','p2.pkwt_before=p3.pkwt_id','left')
+                ->join('dept d2','d1.dept_parent=d2.dept_id','left'); 
+        //$this->db->group_by('emply_name');
+        return $this->db->get('pkwt p1');
 
     }
 }

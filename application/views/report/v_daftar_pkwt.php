@@ -54,14 +54,14 @@ $fpdf->SetFont('Arial','',9);
 foreach($pkwt->result() as $data)
 {
     $fpdf->Ln();    
-    $fpdf->Cell(2,0.5,$data->pkwt_id,1,0,'C');
-    $fpdf->Cell(2,0.5,$data->pkwt_kk,1,0,'C');
-    $fpdf->Cell(2,0.5,$data->pkwt_nik,1,0,'C');
-    $fpdf->Cell(2,0.5,$data->pkwt_dept,1,0,'C');
-    $fpdf->Cell(2,0.5,$data->pkwt_post,1,0,'C');
-    $fpdf->Cell(3,0.5,$data->pkwt_status,1,0,'C');
-    $fpdf->Cell(2,0.5,$data->pkwt_start,1,0,'C');
-    $fpdf->Cell(2,0.5,$data->pkwt_end,1,0,'C');
+    $fpdf->Cell(4,0.5,$data->departemen,1,0,'C');
+    $fpdf->Cell(4,0.5,$data->bagian,1,0,'C');
+    $fpdf->Cell(2,0.5,$data->emply_name,1,0,'C');
+    $fpdf->Cell(2,0.5,$data->emply_start,1,0,'C');
+    $fpdf->Cell(2,0.5,$data->awal,1,0,'C');
+    $fpdf->Cell(2,0.5,$data->perpanjangan,1,0,'C');
+    $fpdf->Cell(2,0.5,$data->pembaharuan,1,0,'C');
+    
 
 
 }
