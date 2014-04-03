@@ -92,6 +92,7 @@ function adminMenuHapus(){
             <th data-options="field:'uri'" width="100" halign="center" sortable="true">URI</th>
             <th data-options="field:'allowed'" width="100" halign="center" sortable="true">Allowed</th>
             <th data-options="field:'iconCls'" width="100" halign="center" sortable="true">Icon</th>
+            <th data-options="field:'type'" width="30" halign="center" sortable="true">Type</th>
         </tr>
     </thead>
 </table>
@@ -131,6 +132,12 @@ function adminMenuHapus(){
         <div class="fitem">
             <label for="type">Icon</label>
             <input type="text" name="iconCls" class="easyui-validatebox" />
+        </div>
+        <div class="fitem">
+            <label for="type">Type</label>
+            <input class="easyui-combobox" name="type" required data-options="
+                url:'<?php echo site_url('admin/menu/enumType'); ?>',
+                method:'get', valueField:'data', textField:'data', panelHeight:'auto'" />
         </div>
     </form>
 </div>

@@ -31,6 +31,11 @@ class Menu extends CI_Controller {
       
     }
     
+    public function enumType()
+    {
+        echo $this->record->enumField('menu', 'type');
+    }
+    
     public function create()
     {
         if(!isset($_POST))	

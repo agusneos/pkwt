@@ -11,20 +11,66 @@
     <script type="text/javascript" src="<?=base_url('assets/easyui/jquery.easyui.min.js')?>"></script>
     <script type="text/javascript">
         var url;        
-        function addTab(title, url, iconCls){
-            if ($('#tt').tabs('exists', title)){
-                $('#tt').tabs('select', title);
-            } else {
-                if ( url != "kosong")
-                {
-                    $('#tt').tabs('add',{
-                        title:title,                    
-                        href:url,
-                        closable:true,
-                        iconCls:iconCls,
-                    })
+        function addTab(title, url, iconCls, type){
+            if (type == "tabs")
+            {
+                if ($('#tt').tabs('exists', title)){
+                    $('#tt').tabs('select', title);
+                } else {
+                    if ( url != "kosong")
+                    {
+                        $('#tt').tabs('add',{
+                            title:title,                    
+                            href:url,
+                            closable:true,
+                            iconCls:iconCls,
+                        })
+                    }
                 }
-            }            
+            }
+            else if (type == "dialog")
+            {
+                if ( url != "kosong")
+                    {
+                        $('#dial').dialog({
+                            title: title,
+                            width: 400,
+                            height: 200,
+                            closed: true,
+                            href: url,
+                            modal: true
+                        });
+                        $('#dial').dialog('open');
+                    }
+            }
+            else if (type == "messager")
+            {
+                $.messager.confirm('Konfirmasi','Anda ingin mencetak '+title,function(r){
+                    if (r){                        
+                        var content = '<iframe scrolling="auto" frameborder="0"  \n\
+                                        src="'+url+'" style="width:100%;height:100%;"></iframe>'
+                        if ($('#tt').tabs('exists', title)){
+                            $('#tt').tabs('select', title);
+                        } else {
+                            $('#tt').tabs('add',{
+                                title:title,
+                                content:content,
+                                closable:true,
+                                iconCls:iconCls
+                            });
+                        }
+                    }
+                });
+            }
+            else if (type == "window")
+            {
+                alert('window');
+            }
+            else
+            {
+                
+            }
+                        
         }
         
         function dashboardTab(title){
@@ -135,7 +181,10 @@
         <div data-options="region:'center'">
             <div id="tt" class="easyui-tabs" data-options="fit:true,border:false,plain:true" >
                 <div title="Dashboard" data-options="closable:false,href:'dashboard',iconCls:'icon-dashboard'" style="padding:10px"></div>
-            </div>             
+            </div>
+            <div id="dial">      
+                
+            </div>
         </div>
     </div>
     
@@ -143,7 +192,7 @@
         $('#ttr').tree({
         url:'<?php echo site_url('menu/index'); ?>',
         onClick: function(node){
-            addTab(node.text, node.uri, node.iconCls);
+            addTab(node.text, node.uri, node.iconCls, node.type);
 	}
     });
     </script>

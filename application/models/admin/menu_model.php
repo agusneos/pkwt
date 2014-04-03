@@ -6,6 +6,7 @@ class Menu_model extends CI_Model
     
     public function __construct() {
         parent::__construct();
+        $this->load->helper('database');
     }
 
     public function getJson()
@@ -105,6 +106,12 @@ class Menu_model extends CI_Model
         return json_encode($data);         
     }
     
+    public function enumField($table, $field)
+    {
+        $enums = field_enums($table, $field);
+        return json_encode($enums);
+    }
+    
     public function create()
     {
         return $this->db->insert(self::$table,array(
@@ -112,7 +119,8 @@ class Menu_model extends CI_Model
             'parentId'=>$this->input->post('parentId',true),
             'uri'=>$this->input->post('uri',true),
             'allowed'=>$this->input->post('allowed',true),
-            'iconCls'=>$this->input->post('iconCls',true)
+            'iconCls'=>$this->input->post('iconCls',true),
+            'type'=>$this->input->post('type',true)
         ));
     }
     
@@ -124,7 +132,8 @@ class Menu_model extends CI_Model
             'parentId'=>$this->input->post('parentId',true),
             'uri'=>$this->input->post('uri',true),
             'allowed'=>$this->input->post('allowed',true),
-            'iconCls'=>$this->input->post('iconCls',true)
+            'iconCls'=>$this->input->post('iconCls',true),
+            'type'=>$this->input->post('type',true)
         ));
     }
    

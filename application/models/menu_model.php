@@ -26,6 +26,7 @@ class Menu_model extends CI_Model
             $node['uri'] = $this->link_menu($row->uri);
             $node['allowed'] = $row->allowed;
             $node['iconCls'] = $row->iconCls;
+            $node['type'] = $row->type;
             array_push($result, $node);
         }
         return json_encode($result);
