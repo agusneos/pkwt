@@ -135,7 +135,7 @@ function adminMenuHapus(){
         </div>
         <div class="fitem">
             <label for="type">Type</label>
-            <input class="easyui-combobox" name="type" required data-options="
+            <input class="easyui-combobox" name="type" data-options="
                 url:'<?php echo site_url('admin/menu/enumType'); ?>',
                 method:'get', valueField:'data', textField:'data', panelHeight:'auto'" />
         </div>

@@ -16,7 +16,7 @@ class Pkwt extends CI_Controller {
         if (isset($_GET['grid'])) 
             echo $this->record->getJson();        
          else 
-            $this->load->view('transaksi/pkwt');        
+            $this->load->view('transaksi/pkwt/pkwt');        
     } 
     
     public function getPkwtBeforeData($pkwt_id=null)
@@ -113,7 +113,7 @@ class Pkwt extends CI_Controller {
         define('FPDF_FONTPATH',$this->config->item('fonts_path'));
         $id = $this->uri->segment(4);
         $data['pkwt'] = $this->record->get_pkwt_by_id($id);
-        $this->load->view('transaksi/cetak_pkwt.php',$data);
+        $this->load->view('transaksi/pkwt/cetak_pkwt.php',$data);
     }
     
     function cetak_evaluasi()
@@ -126,7 +126,7 @@ class Pkwt extends CI_Controller {
         define('FPDF_FONTPATH',$this->config->item('fonts_path'));
         $id = $this->uri->segment(4);
         $data['pkwt'] = $this->record->get_pkwt_by_id($id);
-        $this->load->view('transaksi/cetak_evaluasi.php',$data);
+        $this->load->view('transaksi/pkwt/cetak_evaluasi.php',$data);
     }
 }
 
