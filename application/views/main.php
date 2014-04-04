@@ -32,7 +32,7 @@
             {
                 if ( url != "kosong")
                     {
-                        $('#dial').dialog({
+                        $('#dlg').dialog({
                             title: title,
                             width: 400,
                             height: 200,
@@ -40,7 +40,7 @@
                             href: url,
                             modal: true
                         });
-                        $('#dial').dialog('open');
+                        $('#dlg').dialog('open');
                     }
             }
             else if (type == "messager")
@@ -182,7 +182,7 @@
             <div id="tt" class="easyui-tabs" data-options="fit:true,border:false,plain:true" >
                 <div title="Dashboard" data-options="closable:false,href:'dashboard',iconCls:'icon-dashboard'" style="padding:10px"></div>
             </div>
-            <div id="dial">      
+            <div id="dlg">      
                 
             </div>
         </div>

@@ -6,7 +6,7 @@ class PDF extends FPDF
     function Header()
     {
         // Logo
-        $this->Image('assets/images/hikari.jpg', 1, 1,7.5,1.2);
+        $this->Image('assets/images/logo.jpg', 1, 1,7.5,1.2);
         // Arial bold 15
         $this->SetFont('Arial','B',15);
         // Move to the right
@@ -30,7 +30,7 @@ $fpdf->FPDF("P","cm","A4");
 $fpdf->SetMargins(1,1,1);
 //$fpdf->AliasNbPages();
 $fpdf->AddPage();
-$fpdf->SetFont('Arial','',6);
+$fpdf->SetFont('Arial','',7);
 
 function format_date($tgl)
 {
@@ -99,7 +99,7 @@ function hasil($start, $awal, $perpanjangan, $pembaharuan)
 
 $height = 0.4;
 $fpdf->Cell(0.7,$height,'No',1,0,'C');
-$fpdf->Cell(3,$height,'Departemen',1,0,'C');
+$fpdf->Cell(2.5,$height,'Departemen',1,0,'C');
 $fpdf->Cell(3,$height,'Bagian',1,0,'C');
 $fpdf->Cell(4,$height,'Nama Karyawan',1,0,'C');
 $fpdf->Cell(1.7,$height,'Masuk',1,0,'C');
@@ -114,7 +114,7 @@ foreach($pkwt->result() as $data)
 {
     $fpdf->Ln();
     $fpdf->Cell(0.7,$height,$noUrut,1,0,'C');
-    $fpdf->Cell(3,$height,$data->departemen,1,0,'C');
+    $fpdf->Cell(2.5,$height,$data->departemen,1,0,'C');
     $fpdf->Cell(3,$height,$data->bagian,1,0,'C');
     $fpdf->Cell(4,$height,$data->nama,1,0,'L');    
     $fpdf->Cell(1.7,$height,format_date($data->start),1,0,'C');

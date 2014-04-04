@@ -273,7 +273,7 @@ $kII                = pembaharuan($data->pkwt_status,$data->pkwt_kk, $data->pkwt
 ///Akhir Definisi Variabel
 
 // Setting Font : String Family, String Style, Font size 
-$fpdf->Image('assets/images/hikari.jpg', 1, 1,7.5,1.2);
+$fpdf->Image('assets/images/logo.jpg', 1, 1,7.5,1.2);
 $fpdf->Ln();
 $fpdf->Cell(15);
 $fpdf->SetFont('Arial','',10);
