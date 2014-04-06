@@ -156,7 +156,7 @@ function FPDF($orientation='P', $unit='mm', $format='A4')
 	//Enable compression
 	$this->SetCompression(true);
 	//Set default PDF version number
-	$this->PDFVersion='1.3';
+	$this->PDFVersion='1.6';
 }
 
 function SetMargins($left, $top, $right=null)

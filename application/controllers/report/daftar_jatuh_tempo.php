@@ -13,12 +13,26 @@ class Daftar_jatuh_tempo extends CI_Controller {
 
         $auth->restrict();
         //$auth->cek_menu(14);
+        $this->load->view('report/daftar_jatuh_tempo/v_dialog.php');
+    }
+    
+    function cetak()
+    {
+        $auth = new Auth();
+
+        $auth->restrict();
+        //$auth->cek_menu(14);
         
         
         define('FPDF_FONTPATH',$this->config->item('fonts_path'));
-        //$id = $this->uri->segment(4);
+        $id = $this->uri->segment(4);
         $data['rows'] = $this->record->daftar_jatuh_tempo($id);
-        $this->load->view('report/habis_kontrak/v_daftar_jatuh_tempo.php',$data);
+        $this->load->view('report/daftar_jatuh_tempo/v_daftar_jatuh_tempo.php',$data);
+    }
+    
+    function get_year()
+    {
+        echo $this->record->get_year();
     }
 }
 
