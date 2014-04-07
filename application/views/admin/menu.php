@@ -5,7 +5,7 @@
 var url;
 
 function adminMenuCreate(){
-    $('#dlg-admin-menu').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-admin-menu').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-admin-menu').form('clear');
     url = '<?php echo site_url('admin/menu/create'); ?>';
 }
@@ -13,7 +13,7 @@ function adminMenuCreate(){
 function adminMenuUpdate(){
     var row = $('#grid-admin-menu').datagrid('getSelected');
     if(row){
-        $('#dlg-admin-menu').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-admin-menu').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-admin-menu').form('load',row);
         url = '<?php echo site_url('admin/menu/update'); ?>/' + row.id;
     }

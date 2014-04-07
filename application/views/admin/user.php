@@ -5,7 +5,7 @@
 var url;
 
 function adminUserCreate(){
-    $('#dlg-admin-user').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-admin-user').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-admin-user').form('clear');
     url = '<?php echo site_url('admin/user/create'); ?>';
 }
@@ -34,7 +34,7 @@ function adminUserSave(){
 function adminUserUpdate(){
     var row = $('#grid-admin-user').datagrid('getSelected');
     if(row){
-        $('#dlg-update-admin-user').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-update-admin-user').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-update-admin-user').form('load',row);
         url = '<?php echo site_url('admin/user/update'); ?>/' + row.user_id;
     }
@@ -64,7 +64,7 @@ function adminUserUpdateSave(){
 function adminUserReset(){
     var row = $('#grid-admin-user').datagrid('getSelected');
     if(row){
-        $('#dlg-reset-admin-user').dialog('open').dialog('setTitle','Reset Password');
+        $('#dlg-reset-admin-user').dialog({modal: true}).dialog('open').dialog('setTitle','Reset Password');
         $('#fm-reset-main').form('reset');
         url = '<?php echo site_url('admin/user/reset'); ?>/' + row.user_id;
     }

@@ -5,7 +5,7 @@
 var url;
 
 function masterUpahCreate(){
-    $('#dlg-master-upah').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-master-upah').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-master-upah').form('clear');
     url = '<?php echo site_url('master/upah/create'); ?>';
 }
@@ -13,7 +13,7 @@ function masterUpahCreate(){
 function  masterUpahUpdate(){
     var row = $('#grid-master-upah').datagrid('getSelected');
     if(row){
-        $('#dlg-master-upah').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-master-upah').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-master-upah').form('load',row);
         url = '<?php echo site_url('master/upah/update'); ?>/' + row.salary_id;
     }

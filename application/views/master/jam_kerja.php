@@ -5,7 +5,7 @@
 var url;
 var urls;
 function masterJam_kerjaCreate(){
-    $('#dlg-master-jam_kerja').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-master-jam_kerja').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-master-jam_kerja').form('clear');
     url = '<?php echo site_url('master/jam_kerja/create'); ?>';
     
@@ -14,7 +14,7 @@ function masterJam_kerjaCreate(){
 function masterJam_kerjaUpdate(){
     var row = $('#grid-master-jam_kerja').datagrid('getSelected');
     if(row){
-        $('#dlg-master-jam_kerja').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-master-jam_kerja').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-master-jam_kerja').form('load',row);
         url = '<?php echo site_url('master/jam_kerja/update'); ?>/' + row.workday_id;        
     }
@@ -66,7 +66,7 @@ function UploadJadwal()
 {
     var row = $('#grid-master-jam_kerja').datagrid('getSelected');
     if(row){
-        $('#dlg-master-jam_kerja-upload').dialog('open').dialog('setTitle','Upload Jadwal');   
+        $('#dlg-master-jam_kerja-upload').dialog({modal: true}).dialog('open').dialog('setTitle','Upload Jadwal');   
         //$('#fm-master-jam_kerja-upload').form('load',row);
         $('#fm-master-jam_kerja-upload').form('reset');
         urls = '<?php echo site_url('master/jam_kerja/upload'); ?>/' + row.workday_id;        

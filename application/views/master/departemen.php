@@ -6,7 +6,7 @@
 var url;
 
 function masterDepartemenCreate(){
-    $('#dlg-master-departemen').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-master-departemen').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-master-departemen').form('clear');
     url = '<?php echo site_url('master/departemen/create'); ?>';
    
@@ -15,7 +15,7 @@ function masterDepartemenCreate(){
 function masterDepartemenUpdate(){
     var row = $('#grid-master-departemen').datagrid('getSelected');
     if(row){
-        $('#dlg-master-departemen').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-master-departemen').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-master-departemen').form('load',row);
         url = '<?php echo site_url('master/departemen/update'); ?>/' + row['dept_id'];
     }

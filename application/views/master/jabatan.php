@@ -5,7 +5,7 @@
 var url;
 
 function masterJabatanCreate(){
-    $('#dlg-master-jabatan').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-master-jabatan').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-master-jabatan').form('clear');
     url = '<?php echo site_url('master/jabatan/create'); ?>';
 }
@@ -13,7 +13,7 @@ function masterJabatanCreate(){
 function masterJabatanUpdate(){
     var row = $('#grid-master-jabatan').datagrid('getSelected');
     if(row){
-        $('#dlg-master-jabatan').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-master-jabatan').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-master-jabatan').form('load',row);
         url = '<?php echo site_url('master/jabatan/update'); ?>/' + row.post_id;
     }

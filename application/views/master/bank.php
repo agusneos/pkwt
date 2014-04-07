@@ -5,7 +5,7 @@
 var url;
 
 function masterBankCreate(){
-    $('#dlg-master-bank').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-master-bank').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-master-bank').form('clear');
     url = '<?php echo site_url('master/bank/create'); ?>';
 }
@@ -13,7 +13,7 @@ function masterBankCreate(){
 function masterBankUpdate(){
     var row = $('#grid-master-bank').datagrid('getSelected');
     if(row){
-        $('#dlg-master-bank').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-master-bank').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-master-bank').form('load',row);
         url = '<?php echo site_url('master/bank/update'); ?>/' + row.bank_id;
     }

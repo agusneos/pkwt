@@ -13,7 +13,7 @@
 <script type="text/javascript">   
     var url;
     function transaksiPkwtCreate(){
-        $('#dlg-transaksi-pkwt').dialog('open').dialog('setTitle','Tambah Data');
+        $('#dlg-transaksi-pkwt').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
         $('#fm-transaksi-pkwt').form('clear');
         $('#kk').combobox('enable');
         $('#nm').combobox('enable');
@@ -36,7 +36,7 @@
             $('#sal').combobox('enable');
             $('#spcsal').numberbox('enable');
         if(row){
-            $('#dlg-transaksi-pkwt').dialog('open').dialog('setTitle','Edit Data');
+            $('#dlg-transaksi-pkwt').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
             $('#fm-transaksi-pkwt').form('load',row);
             url = '<?php echo site_url('transaksi/pkwt/update'); ?>/' + row.pkwt_id;
         }

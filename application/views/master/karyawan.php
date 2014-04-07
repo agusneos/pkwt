@@ -5,7 +5,7 @@
 var url;
 
 function masterKaryawanCreate(){
-    $('#dlg-master-karyawan').dialog('open').dialog('setTitle','Tambah Data');
+    $('#dlg-master-karyawan').dialog({modal: true}).dialog('open').dialog('setTitle','Tambah Data');
     $('#fm-master-karyawan').form('clear');
     url = '<?php echo site_url('master/karyawan/create'); ?>';
 }
@@ -13,7 +13,7 @@ function masterKaryawanCreate(){
 function masterKaryawanUpdate(){
     var row = $('#grid-master-karyawan').datagrid('getSelected');
     if(row){
-        $('#dlg-master-karyawan').dialog('open').dialog('setTitle','Edit Data');
+        $('#dlg-master-karyawan').dialog({modal: true}).dialog('open').dialog('setTitle','Edit Data');
         $('#fm-master-karyawan').form('load',row);
         url = '<?php echo site_url('master/karyawan/update'); ?>/' + row.emply_nik;
     }

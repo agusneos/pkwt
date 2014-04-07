@@ -82,7 +82,7 @@
         function mainReset(){
             var row = <?php echo $this->session->userdata('user_id');?>;
             if(row){        
-                $('#dlg-reset-main').dialog('open').dialog('setTitle','Reset Password');
+                $('#dlg-reset-main').dialog({modal: true}).dialog('open').dialog('setTitle','Reset Password');
                 $('#fm-reset-main').form('reset');
                 url = '<?php echo site_url('admin/user/reset'); ?>/' + row;
             }
