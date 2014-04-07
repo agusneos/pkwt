@@ -1,0 +1,28 @@
+Ver 1.1
+2014-04-07
+
+* Bug Fixed
+- Penambahan dialog modal pada semua dialog
+
+* Add
+- Report
+-- Daftar PKWT
+-- Habis Kontrak
+-- Daftar Jatuh Tempo
+
+- Setting
+-- Number Sequence
+
+* Modif
+- Transaksi
+-- Transaksi PKWT
+--- Penambahan kolom nomor manual.
+
+- Admin
+-- Admin Menu
+--- Penambahan kolom Type
+=============================================================
+Ver 1.0
+2014-03-24
+
+Instalasi Modul Dasar Sesuai Request
