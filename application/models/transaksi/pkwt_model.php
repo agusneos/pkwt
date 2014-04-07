@@ -121,7 +121,8 @@ class Pkwt_model extends CI_Model
             'pkwt_spc_salary'=>$this->input->post('pkwt_spc_salary',true),
             'pkwt_sign'=>$this->input->post('pkwt_sign',true),
             'pkwt_before'=>$this->input->post('pkwt_before',true),
-            'pkwt_process'=>$this->input->post('pkwt_process',true)
+            'pkwt_process'=>$this->input->post('pkwt_process',true),
+            'pkwt_manual'=>$this->input->post('pkwt_manual',true)
         ));
     }
     
@@ -149,7 +150,8 @@ class Pkwt_model extends CI_Model
             'pkwt_spc_salary'=>$this->input->post('pkwt_spc_salary',true),
             'pkwt_sign'=>$this->input->post('pkwt_sign',true),
             'pkwt_before'=>$this->input->post('pkwt_before',true),
-            'pkwt_process'=>$this->input->post('pkwt_process',true)
+            'pkwt_process'=>$this->input->post('pkwt_process',true),
+            'pkwt_manual'=>$this->input->post('pkwt_manual',true)
         ));
     }
     
@@ -252,8 +254,8 @@ class Pkwt_model extends CI_Model
     {
         $this->db->select('emply.*, workday.*, salary.*, post.*, 
                            p.pkwt_id AS pkwt_id, p.pkwt_kk AS pkwt_kk, p.pkwt_sign AS pkwt_sign, p.pkwt_start AS pkwt_start, p.pkwt_end AS pkwt_end,
-                           p1.pkwt_id AS id_1, p1.pkwt_sign AS sign_1, p1.pkwt_start AS start_1, p1.pkwt_end AS end_1, 
-                           p2.pkwt_id AS id_2, p2.pkwt_sign AS sign_2, p2.pkwt_start AS start_2, p2.pkwt_end AS end_2,
+                           p1.pkwt_id AS id_1, p1.pkwt_sign AS sign_1, p1.pkwt_start AS start_1, p1.pkwt_end AS end_1, p1.pkwt_manual AS manual_1,
+                           p2.pkwt_id AS id_2, p2.pkwt_sign AS sign_2, p2.pkwt_start AS start_2, p2.pkwt_end AS end_2, p2.pkwt_manual AS manual_2,
                            p.pkwt_status AS pkwt_status, p.pkwt_process AS pkwt_process, p.pkwt_spc_salary AS pkwt_spc_salary,
                            dept.dept_name AS dept_name,dept2.dept_name AS departemen');
         $this->db->join('emply','emply_nik=p.pkwt_nik','left')

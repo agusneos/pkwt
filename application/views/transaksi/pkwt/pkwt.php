@@ -160,6 +160,7 @@
             <th data-options="field:'pkwt_sign'" width="80" align="center" sortable="true">Tanggal PKWT</th>
             <th data-options="field:'pkwt_before'" width="60"align="center" sortable="true">PKWT Sebelumnya</th>
             <th data-options="field:'pkwt_process'" width="50" align="center" sortable="true">Sudah Diproses</th>
+            <th data-options="field:'pkwt_manual'" width="50" align="center" sortable="true">Nomor Manual</th>
         </tr>
     </thead>
 </table>
@@ -174,7 +175,7 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="printEvaluasi()">Cetak Evaluasi</a>          
 </div>
 <!-- Dialog Form -->
-<div id="dlg-transaksi-pkwt" class="easyui-dialog" style="width:410px; height:450px; padding: 10px 20px" closed="true" buttons="#dlg-buttons-transaksi-pkwt">
+<div id="dlg-transaksi-pkwt" class="easyui-dialog" style="width:420px; height:480px; padding: 10px 20px" closed="true" buttons="#dlg-buttons-transaksi-pkwt">
     <form id="fm-transaksi-pkwt" method="post" novalidate >
         <div class="fitem">
             <label for="type">PKWT Sebelumnya</label>
@@ -245,6 +246,10 @@
             <input id="proc" class="easyui-combobox" name="pkwt_process" data-options="
                 url:'<?php echo site_url('transaksi/pkwt/enumPkwtProcess'); ?>',
                 method:'get', valueField:'data', textField:'data', panelHeight:'auto'" />
+        </div>
+        <div class="fitem">
+            <label for="type">No. Manual</label>
+            <input type="text" name="pkwt_manual" class="easyui-validatebox" />
         </div>
     </form>
 </div>

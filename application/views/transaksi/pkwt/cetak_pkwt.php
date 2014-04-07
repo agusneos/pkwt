@@ -251,14 +251,23 @@ function huruf_a($kk)
     }
 }
 
-function isi_a($kk, $sign_1, $sign_2, $id_1, $id_2, $start_1, $start_2, $end_1, $end_2)
+function isi_a($kk, $sign_1, $sign_2, $id_1, $id_2, $start_1, $start_2, $end_1, $end_2, $manual_1, $manual_2)
 {
     if ($kk === 'I'){
         return '';
     } else if ($kk === 'P'){
-        return 'PARA PIHAK telah membuat dan menandatangani Perjanjian Kerja Waktu Tertentu Nomor: '.$id_1.'/PKWT/HRD-GA/'.Romawi($sign_1).'/'.fty($sign_1).' tertanggal '.ft($start_1).' ("PKWT"). Jangka waktu PKWT tersebut telah berakhir pada tanggal '.ft($end_1).'.';
+        if ($manual_1 != ''){
+            return 'PARA PIHAK telah membuat dan menandatangani Perjanjian Kerja Waktu Tertentu Nomor: '.$manual_1.' tertanggal '.ft($start_1).' ("PKWT"). Jangka waktu PKWT tersebut telah berakhir pada tanggal '.ft($end_1).'.';
+        } else {
+            return 'PARA PIHAK telah membuat dan menandatangani Perjanjian Kerja Waktu Tertentu Nomor: '.$id_1.'/PKWT/HRD-GA/'.Romawi($sign_1).'/'.fty($sign_1).' tertanggal '.ft($start_1).' ("PKWT"). Jangka waktu PKWT tersebut telah berakhir pada tanggal '.ft($end_1).'.';
+        }       
     } else {
-        return 'PARA PIHAK telah membuat dan menandatangani Perjanjian Kerja Waktu Tertentu Nomor: '.$id_2.'/PKWT/HRD-GA/'.Romawi($sign_2).'/'.fty($sign_2).' tertanggal '.ft($start_2).' ("PKWT"). Jangka waktu PKWT tersebut telah berakhir pada tanggal '.ft($end_2).'.';
+        if ($manual_2 != ''){
+            return 'PARA PIHAK telah membuat dan menandatangani Perjanjian Kerja Waktu Tertentu Nomor: '.$manual_2.' tertanggal '.ft($start_2).' ("PKWT"). Jangka waktu PKWT tersebut telah berakhir pada tanggal '.ft($end_2).'.';
+        } else{
+            return 'PARA PIHAK telah membuat dan menandatangani Perjanjian Kerja Waktu Tertentu Nomor: '.$id_2.'/PKWT/HRD-GA/'.Romawi($sign_2).'/'.fty($sign_2).' tertanggal '.ft($start_2).' ("PKWT"). Jangka waktu PKWT tersebut telah berakhir pada tanggal '.ft($end_2).'.';
+        }
+        
     }
 }
 
@@ -271,14 +280,19 @@ function huruf_b($kk)
     }
 }
 
-function isi_b($kk, $id_1, $sign_1, $start_1, $end_1)
+function isi_b($kk, $id_1, $sign_1, $start_1, $end_1, $manual_1)
 {
     if ($kk === 'I'){
         return '';
     } elseif($kk === 'P'){
         return 'PIHAK PERTAMA setuju untuk memperpanjang PKWT dan PIHAK KEDUA setuju untuk menerima perpanjangan PKWT tersebut dengan jangka waktu Perpanjangan PKWT sebagaimana disepakati dalam dokumen Perpanjangan PKWT ini.';
     } else {
-        return 'Selanjutnya PARA PIHAK telah membuat dan menandatangani Perpanjangan Perjanjian Kerja Waktu Tertentu Nomor: '.$id_1.'/PKWT/HRD-GA/'.Romawi($sign_1).'/'.fty($sign_1).' tertanggal '.ft($start_1).' ("Perpanjangan PKWT"). Jangka waktu Perpanjangan PKWT tersebut telah berakhir pada tanggal '.ft($end_1).'.';
+        if ($manual_1 != ''){
+            return 'Selanjutnya PARA PIHAK telah membuat dan menandatangani Perpanjangan Perjanjian Kerja Waktu Tertentu Nomor: '.$manual_1.' tertanggal '.ft($start_1).' ("Perpanjangan PKWT"). Jangka waktu Perpanjangan PKWT tersebut telah berakhir pada tanggal '.ft($end_1).'.';
+        } else{
+            return 'Selanjutnya PARA PIHAK telah membuat dan menandatangani Perpanjangan Perjanjian Kerja Waktu Tertentu Nomor: '.$id_1.'/PKWT/HRD-GA/'.Romawi($sign_1).'/'.fty($sign_1).' tertanggal '.ft($start_1).' ("Perpanjangan PKWT"). Jangka waktu Perpanjangan PKWT tersebut telah berakhir pada tanggal '.ft($end_1).'.';
+        }
+        
     }
 }
 
@@ -486,12 +500,12 @@ $fpdf->MultiCell(0,0.5,'(PIHAK PERTAMA dan PIHAK KEDUA secara sendiri-sendiri se
 $fpdf->Ln(0.5);
 $fpdf->Cell(0.75,0.5,'',0,0,'L');
 $fpdf->Cell(0.75,0.5,huruf_a($data->pkwt_kk),0,0,'L');
-$fpdf->MultiCell(0,0.5,isi_a($data->pkwt_kk, $data->sign_1, $data->sign_2, $data->id_1, $data->id_2, $data->start_1, $data->start_2, $data->end_1, $data->end_2),0,'J');
+$fpdf->MultiCell(0,0.5,isi_a($data->pkwt_kk, $data->sign_1, $data->sign_2, $data->id_1, $data->id_2, $data->start_1, $data->start_2, $data->end_1, $data->end_2, $data->manual_1, $data->manual_2),0,'J');
 
 $fpdf->Ln(0);
 $fpdf->Cell(0.75,0.5,'',0,0,'L');
 $fpdf->Cell(0.75,0.5,huruf_b($data->pkwt_kk),0,0,'L');
-$fpdf->MultiCell(0,0.5,isi_b($data->pkwt_kk, $data->id_1, $data->sign_1, $data->start_1, $data->end_1),0,'J');
+$fpdf->MultiCell(0,0.5,isi_b($data->pkwt_kk, $data->id_1, $data->sign_1, $data->start_1, $data->end_1, $data->manual_1),0,'J');
 
 $fpdf->Ln(0);
 $fpdf->Cell(0.75,0.5,'',0,0,'L');
